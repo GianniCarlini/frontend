@@ -10,7 +10,6 @@ class Dashboard extends Component{
             <div>
             <Header/>
             <Menu/>
-            <Footer/>
             </div>
         )
     }
