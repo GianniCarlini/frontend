@@ -18,22 +18,17 @@ class Pabellon extends Component{
       const { value } = this.state;
         return (
             <div className="content-wrapper">
-  {/* Content Header (Page header) */}
+              
   <section className="content-header">
     <h1>
       Reserva de pabellón
     </h1>
     
   </section>
-  {/* Main content */}
   <section className="content">
     <div className="row">
-      {/* left column */}
       <div className="col-md-6">
-        {/* general form elements */}
         <div className="box box-primary">
-          {/* /.box-header */}
-          {/* form start */}
         <form>
             <div className="form-group">
               <label>Paciente</label>
