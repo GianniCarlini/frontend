@@ -9,7 +9,7 @@ class Menu extends Component {
             <div>
   <aside className="main-sidebar sidebar-dark-primary elevation-4">
     {/* Brand Logo */}
-    <a href="index3.html" className="brand-link">
+    <a href="#" className="brand-link">
       <FontAwesomeIcon icon={faHospital} />
       <span>            </span>
       <span className="brand-text font-weight-light">GCR</span>
@@ -25,86 +25,27 @@ class Menu extends Component {
             <a href="#" className="nav-link">
               <i className="nav-icon far fa-address-book" />
               <p>
-                Medicos
-                <i className="right fas fa-angle-left" />
-              </p>
-            </a>
-            <ul className="nav nav-treeview">
-              <li className="nav-item">
-                <a href="pages/charts/chartjs.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Lista Medicos</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/charts/flot.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Agregar Medico</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/charts/inline.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Por si la xd</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li className="nav-item has-treeview">
-            <a href="#" className="nav-link">
-              <i className="nav-icon fas fa-tree" />
-              <p>
-                UI Elements
+                Reservas
                 <i className="fas fa-angle-left right" />
               </p>
             </a>
             <ul className="nav nav-treeview">
               <li className="nav-item">
-                <a href="pages/UI/general.html" className="nav-link">
+                <a href="#" className="nav-link">
                   <i className="far fa-circle nav-icon" />
-                  <p>General</p>
+                  <p>Reservar Pabellón</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a href="pages/UI/icons.html" className="nav-link">
+                <a href="Pabellon" className="nav-link">
                   <i className="far fa-circle nav-icon" />
-                  <p>Icons</p>
+                  <p>Reservar Recuperación</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a href="pages/UI/buttons.html" className="nav-link">
+                <a href="#" className="nav-link">
                   <i className="far fa-circle nav-icon" />
-                  <p>Buttons</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/UI/sliders.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Sliders</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/UI/modals.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Modals &amp; Alerts</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/UI/navbar.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Navbar &amp; Tabs</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/UI/timeline.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Timeline</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/UI/ribbons.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Ribbons</p>
+                  <p>Reservar Sillon</p>
                 </a>
               </li>
             </ul>
