@@ -1,8 +1,9 @@
 import React, {Component, useState } from 'react';
 import Select from 'react-select'
 import DateTimePicker from 'react-datetime-picker';
+import moment from "moment";
 
-
+date_create: moment().format("DD-MM-YYYY hh:mm:ss")
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
@@ -21,7 +22,7 @@ class Pabellon extends Component{
               
   <section className="content-header">
     <h1>
-      Reserva de pabellón
+      Reserva de pabellón 
     </h1>
     
   </section>
@@ -34,7 +35,7 @@ class Pabellon extends Component{
               <label>Paciente</label>
                 <Select
                 className="paciente"
-                defaultValue={" "}
+                defaultValue=" "
                 options={options}
                 />
             </div>
@@ -67,7 +68,6 @@ class Pabellon extends Component{
             <div className="form-group row">
               <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
               <div className="col-sm-10">
-                <input type="password" className="form-control" id="inputPassword3" placeholder="Password" />
               </div>
             </div>
             <fieldset className="form-group">
