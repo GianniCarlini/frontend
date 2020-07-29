@@ -10,8 +10,6 @@ import Cama from "./components/Cama/ReservaCama.jsx"
 import VerCama from "./components/Cama/VerCama.jsx"
 import Solicitud from "./components/Solicitudes/Solicitud.jsx"
 import VerSolicitud from "./components/Solicitudes/VerSolicitud.jsx"
-import Calendario from "./components/Calendario.js";
-import Calendario2 from "./components/Calendario2.js";
 
 class App extends Component{
     render() {
@@ -31,8 +29,6 @@ class App extends Component{
                 <Route exact path='/solicitud' component={Solicitud} />
                 <Route exact path='/solicitud/ver' component={VerSolicitud} />
                 {/*rutas de prueba*/}
-                <Route exact path='/cal' component={Calendario} />
-                <Route exact path='/demo' component={Calendario2} />
             </Router>
         )
     }

@@ -9,5 +9,6 @@ ReactDOM.render(
         <App/>,
     document.getElementById("root")
 );
-//"start": "node server/server.js",
 serviceWorker.unregister();
+
+//"start": "node server/server.js",
