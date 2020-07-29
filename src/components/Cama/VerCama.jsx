@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes,faSpinner} from '@fortawesome/free-solid-svg-icons'
 
-class VerPabellon extends Component{
+class VerCama extends Component{
     render() {
         return (
           <div className="content-wrapper">
@@ -14,11 +14,10 @@ class VerPabellon extends Component{
                 <thead>
                   <tr>
                     <th>Paciente</th>
-                    <th>Pabellon</th>
-                    <th>Equipo</th>
+                    <th>Cama</th>
                     <th>Inicio</th>
                     <th>Termino</th>
-                    <th>porsilamosca</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -28,8 +27,7 @@ class VerPabellon extends Component{
                     <td>15</td>
                     <td>100</td>
                     <td>100</td>
-                    <td>100</td>
-                    <td>100</td>
+                    <td>Acostao de pana</td>
                     <td>
                       <button
                         value="actualizar"
@@ -57,12 +55,10 @@ class VerPabellon extends Component{
                     <td>340</td>
                     <td>340</td>
                     <td>340</td>
-                    <td>340</td>
                   </tr>
                   <tr>
                     <td>Pantalla</td>
                     <td>10</td>
-                    <td>400</td>
                     <td>400</td>
                     <td>400</td>
                     <td>400</td>
@@ -75,4 +71,4 @@ class VerPabellon extends Component{
         );
     }
 }
-export default VerPabellon;
+export default VerCama;

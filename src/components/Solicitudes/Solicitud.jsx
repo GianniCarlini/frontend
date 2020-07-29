@@ -42,12 +42,13 @@ const Bloque = [
   { value: '20:00', label: '20:00' },{ value: '20:30', label: '20:30' },{ value: '21:00', label: '21:00' },{ value: '21:30', label: '21:30' },
   { value: '22:00', label: '22:00' },{ value: '22:30', label: '22:30' },{ value: '23:00', label: '23:00' },{ value: '23:30', label: '23:30' }
 ]
-class Pabellon extends Component{
+const Tipo = [{ value: 'Sillon', label: 'Sillón'},{ value: 'Pabellon', label: 'Pabellón'}]
+class ReservaCama extends Component{
     render() {
         return (
           <div className="content-wrapper">
             <section className="content-header">
-              <h1>Reserva de pabellón</h1>
+              <h1>Reserva de cama de recuperación</h1>
             </section>
             <section className="content">
               <div className="row">
@@ -63,56 +64,26 @@ class Pabellon extends Component{
                         />
                       </div>
                       <div className="form-group">
-                        <label>Pabellón</label>
+                        <label>Tipo de reserva</label>
                         <Select
-                          className="pabellon"
-                          defaultValue={" "}
-                          options={options}
+                          className="tipo"
+                          defaultValue={Tipo[0]}
+                          options={Tipo}
                         />
                       </div>
                       <div className="form-group">
-                        <label>Equipo médico</label>
-                        <Select
-                          className="equipo"
-                          defaultValue={" "}
-                          options={options}
+                        <label htmlFor="exampleFormControlTextarea1">
+                          Motivo
+                        </label>
+                        <textarea
+                          className="form-control"
+                          id="exampleFormControlTextarea1"
+                          rows={3}
+                          defaultValue={""}
                         />
                       </div>
                       <div className="form-group">
                         <label>Fecha de ingreso</label>
-                        <div className="row">
-                          <div className="col">
-                            <Select
-                              className="dia inicio"
-                              defaultValue={Dia[0]}
-                              options={Dia}
-                            />
-                          </div>
-                          <div className="col">
-                            <Select
-                              className="Mes"
-                              defaultValue={Mes[0]}
-                              options={Mes}
-                            />
-                          </div>
-                          <div className="col">
-                            <Select
-                              className="Ano"
-                              defaultValue={Ano[0]}
-                              options={Ano}
-                            />
-                          </div>
-                          <div className="col">
-                            <Select
-                              className="Hora"
-                              defaultValue={Bloque[0]}
-                              options={Bloque}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="form-group">
-                        <label>Fecha de salida</label>
                         <div className="row">
                           <div className="col">
                             <Select
@@ -161,4 +132,4 @@ class Pabellon extends Component{
     }
 }
 
-export default Pabellon;
+export default ReservaCama;

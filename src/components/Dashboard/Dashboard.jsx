@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
-import Header from "../Dashboard/Header";
-import Menu from "../Dashboard/Menu";
+import Header from "./Header.jsx";
+import Menu from "./Menu.jsx";
 //import Footer from "../Footer";
 
 class Dashboard extends Component{

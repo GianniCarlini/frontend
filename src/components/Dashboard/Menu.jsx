@@ -32,13 +32,13 @@ class Menu extends Component {
                       </a>
                       <ul className="nav nav-treeview">
                         <li className="nav-item">
-                          <a href="/cal" className="nav-link">
+                          <a href="/solicitud" className="nav-link">
                             <i className="far fa-circle nav-icon" />
                             <p>Realizar Solicitud </p>
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a href="/demo" className="nav-link">
+                          <a href="/solicitud/ver" className="nav-link">
                             <i className="far fa-circle nav-icon" />
                             <p>Ver Solicitudes</p>
                           </a>
@@ -56,13 +56,13 @@ class Menu extends Component {
                       </a>
                       <ul className="nav nav-treeview">
                         <li className="nav-item">
-                          <a href="Pabellon" className="nav-link">
+                          <a href="/reserva/pabellon" className="nav-link">
                             <i className="far fa-circle nav-icon" />
                             <p>Reservar Pabellón</p>
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a href="VerPabellon" className="nav-link">
+                          <a href="/reserva/pabellon/ver" className="nav-link">
                             <i className="far fa-circle nav-icon" />
                             <p>Ver Pabellónes</p>
                           </a>
@@ -80,13 +80,13 @@ class Menu extends Component {
                       </a>
                       <ul className="nav nav-treeview">
                         <li className="nav-item">
-                          <a href="#" className="nav-link">
+                          <a href="/reserva/cama" className="nav-link">
                             <i className="far fa-circle nav-icon" />
                             <p>Reservar Cama</p>
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a href="#" className="nav-link">
+                          <a href="/reserva/cama/ver" className="nav-link">
                             <i className="far fa-circle nav-icon" />
                             <p>Ver Camas</p>
                           </a>
@@ -104,13 +104,13 @@ class Menu extends Component {
                       </a>
                       <ul className="nav nav-treeview">
                         <li className="nav-item">
-                          <a href="#" className="nav-link">
+                          <a href="/reserva/sillon" className="nav-link">
                             <i className="far fa-circle nav-icon" />
                             <p>Reservar Sillón </p>
                           </a>
                         </li>
                         <li className="nav-item">
-                          <a href="#" className="nav-link">
+                          <a href="/reserva/sillon/ver" className="nav-link">
                             <i className="far fa-circle nav-icon" />
                             <p>Ver Sillónes</p>
                           </a>
