@@ -11,8 +11,8 @@ class Inicio extends Component {
                 src={logo}
                 className="App-logo"
                 alt="logo"
-                width="600"
-                height="600"
+                width="630"
+                height="630"
               />
             </section>
           </div>
@@ -21,3 +21,4 @@ class Inicio extends Component {
 }
 
 export default Inicio;
+

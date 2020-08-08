@@ -7,7 +7,7 @@ class Menu extends Component {
         return (
           <div>
             <aside className="main-sidebar sidebar-dark-primary elevation-4">
-              <a href="#" className="brand-link">
+              <a href="/" className="brand-link">
                 <FontAwesomeIcon icon={faHospital} />
                 <span> </span>
                 <span> </span>

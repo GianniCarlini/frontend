@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
+import Inicio from "./components/Dashboard/Inicio.jsx"
+import Car from "./components/Dashboard/carrusel.jsx"
 import Pabellon from "./components/Pabellon/ReservaPabellon.jsx";
 import VerPabellon from "./components/Pabellon/VerPabellon.jsx";
 import Sillon from "./components/Sillon/ReservaSillon.jsx"
@@ -16,6 +18,7 @@ class App extends Component{
         return(
             <Router>
                 <Route exact path='' component={Dashboard} />
+                <Route exact path='/' component={Car} />
                 {/*rutas de pabellon*/}
                 <Route exact path='/reserva/pabellon' component={Pabellon} />
                 <Route exact path='/reserva/pabellon/ver' component={VerPabellon} />
