@@ -1,7 +1,7 @@
 import React, {Component, useState, useEffect} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes, faSpinner} from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
+
 import PabellonDataService from '../../service/PabellonDataService';
 
 const VerPabellon = () => {

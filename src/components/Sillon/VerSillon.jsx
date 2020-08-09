@@ -1,74 +1,70 @@
-import React, {Component} from 'react';
+import React, {Component,useState,useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes,faSpinner} from '@fortawesome/free-solid-svg-icons'
+import SillonDataService from '../../service/SillonDataService';
 
-class VerSillon extends Component{
-    render() {
-        return (
-          <div className="content-wrapper">
-            <section className="content-header">
-              <h1>Reserva de pabellón</h1>
-            </section>
-            <section className="content">
-              <table className="table table-bordered table-hover">
-                <thead>
+const VerSillon = () => {
+  const [loading, setLoading] = useState(false);
+  const [sillon, setSillon] = useState([]);
+  useEffect(() => {
+      setLoading(true);
+      SillonDataService.getSillon().then(res => {
+          setSillon(res.data)
+          setLoading(false);
+      }).catch(error => {
+          console.log(error);
+          setLoading(false);
+      });
+  }, []);
+  const item = sillon.map((sillon) =>
+                <tr key={sillon.quiomioId}>
+                  <td>{sillon.id_paciente}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>{sillon.estado}</td>
+                  <td>
+                    <button
+                      value="actualizar"
+                      title="Actualizar"
+                      type="button"
+                      className="btn btn-info"
+                    >
+                      <FontAwesomeIcon icon={faSpinner} />
+                    </button>
+                    &nbsp;
+                    <button
+                      value="eliminar"
+                      title="Eliminar"
+                      type="button"
+                      class="btn btn-danger"
+                    >
+                      <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                  </td>
+                </tr>
+                );
+  return (<div className="content-wrapper">
+      <section className="content-header">
+          <h1>Reserva de pabellón</h1>
+      </section>
+      <section className="content">
+          <table className="table table-bordered table-hover">
+              <thead>
                   <tr>
-                    <th>Paciente</th>
-                    <th>Sillón</th>
-                    <th>Inicio</th>
-                    <th>Termino</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
+                      <th>Paciente</th>
+                      <th>Sillon</th>
+                      <th>Inicio</th>
+                      <th>Termino</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
                   </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Ratón</td>
-                    <td>15</td>
-                    <td>100</td>
-                    <td>100</td>
-                    <td>100</td>
-                    <td>
-                      <button
-                        value="actualizar"
-                        title="Actualizar"
-                        type="button"
-                        className="btn btn-info"
-                      >
-                        <FontAwesomeIcon icon={faSpinner} />
-                      </button>
-                      &nbsp;
-                      <button
-                        value="eliminar"
-                        title="Eliminar"
-                        type="button"
-                        class="btn btn-danger"
-                      >
-                        <FontAwesomeIcon icon={faTimes} />
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Teclado</td>
-                    <td>34</td>
-                    <td>340</td>
-                    <td>340</td>
-                    <td>340</td>
-                    <td>340</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-          </div>
-        );
-    }
+              </thead>
+              <tbody> 
+                  {item}
+               </tbody>
+          </table>
+      </section>
+  </div>);
 }
 export default VerSillon;
