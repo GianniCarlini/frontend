@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Select from 'react-select'
+import axios from 'axios';
+import FormularioCreate from '../../service/FormularioCreate';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -44,6 +46,17 @@ const Bloque = [
 ]
 const Tipo = [{ value: 'Sillon', label: 'Sillón'},{ value: 'Pabellon', label: 'Pabellón'}]
 class ReservaCama extends Component{
+  
+  constructor(){
+		super();
+		this.state = {
+			fieldPaciente:"",
+			fieldIngreso:"",
+			fieldMotivo:"",
+			fieldTipo:"",
+		}
+	}
+
     render() {
         return (
           <div className="content-wrapper">
@@ -55,21 +68,21 @@ class ReservaCama extends Component{
                 <div className="col-md-6">
                   <div className="box box-primary">
                     <form>
+                      
                       <div className="form-group">
                         <label>Paciente</label>
-                        <Select
-                          className="paciente"
-                          defaultValue=" "
-                          options={options}
-                        />
+                        <input type="text" class="form-control" placeholder="ID paciente"
+            	              value={this.state.fieldPaciente}
+            	              onChange={(event)=>this.setState({fieldPaciente:event.target.value})}
+            	            />
+                        
                       </div>
                       <div className="form-group">
                         <label>Tipo de reserva</label>
-                        <Select
-                          className="tipo"
-                          defaultValue={Tipo[0]}
-                          options={Tipo}
-                        />
+                          <input type="text" class="form-control" placeholder="Sillon/Pabellon"
+            	              value={this.state.fieldTipo}
+            	              onChange={(event)=>this.setState({fieldTipo:event.target.value})}
+            	            />
                       </div>
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">
@@ -80,44 +93,20 @@ class ReservaCama extends Component{
                           id="exampleFormControlTextarea1"
                           rows={3}
                           defaultValue={""}
+                          value={this.state.fieldMotivo}
+							            onChange={(event)=>this.setState({fieldMotivo:event.target.value})}
                         />
                       </div>
                       <div className="form-group">
-                        <label>Fecha de ingreso</label>
-                        <div className="row">
-                          <div className="col">
-                            <Select
-                              className="dia inicio"
-                              defaultValue={Dia[0]}
-                              options={Dia}
-                            />
-                          </div>
-                          <div className="col">
-                            <Select
-                              className="Mes"
-                              defaultValue={Mes[0]}
-                              options={Mes}
-                            />
-                          </div>
-                          <div className="col">
-                            <Select
-                              className="Ano"
-                              defaultValue={Ano[0]}
-                              options={Ano}
-                            />
-                          </div>
-                          <div className="col">
-                            <Select
-                              className="Hora"
-                              defaultValue={Bloque[0]}
-                              options={Bloque}
-                            />
-                          </div>
-                        </div>
+                        <label>Fecha</label>
+                          <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
+            	              value={this.state.fieldIngreso}
+            	              onChange={(event)=>this.setState({fieldIngreso:event.target.value})}
+            	            />
                       </div>
                       <div className="form-group row">
                         <div className="col-sm-10">
-                          <button type="submit" className="btn btn-primary">
+                          <button type="submit" className="btn btn-primary"  onClick={()=>this.onClickSave()}>
                             Enviar
                           </button>
                         </div>
@@ -130,6 +119,16 @@ class ReservaCama extends Component{
           </div>
         );
     }
+    async onClickSave()
+	{
+		const res = await FormularioCreate.create(this.state)
+		if (res.success) {
+			window.location.replace("/solicitud/ver")
+		}
+		else {
+			alert("Error ==>"+res.message.message)
+		}
+	}
 }
 
 export default ReservaCama;

@@ -1,5 +1,5 @@
-const baseUrl = "http://localhost:8080/solicitud"
 import axios from "axios";
+const baseUrl = "http://localhost:8080/solicitud"
 const formulario = {};
 
 formulario.create = async (state) => {
