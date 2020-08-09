@@ -1,33 +1,29 @@
-import React, {Component} from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes,faSpinner} from '@fortawesome/free-solid-svg-icons'
+import React, {Component, useState, useEffect} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faTimes, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import FormularioDataService from '../../service/FormularioDataService';
 
-class VerCama extends Component{
-    render() {
-        return (
-          <div className="content-wrapper">
-            <section className="content-header">
-              <h1>Reserva de pabellón</h1>
-            </section>
-            <section className="content">
-              <table className="table table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Paciente</th>
-                    <th>Tipo</th>
-                    <th>Ingreso</th>
-                    <th>Motivo</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>15</td>
-                    <td>Ratón</td>
-                    <td>15</td>
-                    <td>100</td>
-                    <td>Acostao de pana</td>
+const VerSolicitud = () => {
+    const [loading, setLoading] = useState(false);
+    const [formulario, setFormulario] = useState([]);
+    useEffect(() => {
+        setLoading(true);
+        FormularioDataService.getFormulario().then(res => {
+            setFormulario(res.data)
+            setLoading(false);
+        }).catch(error => {
+            console.log(error);
+            setLoading(false);
+        });
+    }, []);
+    const item = formulario.map((formulario) =>
+                  <tr key={formulario.id}>
+                    <td>{formulario.id}</td>
+                    <td>{formulario.id_paciente}</td>
+                    <td>{formulario.tipo}</td>
+                    <td>{formulario.fecha_ingreso}</td>
+                    <td>{formulario.motivo}</td>
                     <td>
                       <button
                         value="actualizar"
@@ -48,27 +44,28 @@ class VerCama extends Component{
                       </button>
                     </td>
                   </tr>
+                  );
+    return (<div className="content-wrapper">
+        <section className="content-header">
+            <h1>Reserva de pabellón</h1>
+        </section>
+        <section className="content">
+            <table className="table table-bordered table-hover">
+            <thead>
                   <tr>
-                    <td>15</td>
-                    <td>Teclado</td>
-                    <td>34</td>
-                    <td>340</td>
-                    <td>340</td>
-                    <td>340</td>
+                    <th>Id</th>
+                    <th>Paciente</th>
+                    <th>Tipo</th>
+                    <th>Ingreso</th>
+                    <th>Motivo</th>
+                    <th>Acciones</th>
                   </tr>
-                  <tr>
-                    <td>15</td>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-          </div>
-        );
-    }
+                </thead>
+                <tbody> 
+                    {item}
+                 </tbody>
+            </table>
+        </section>
+    </div>);
 }
-export default VerCama;
+export default VerSolicitud;

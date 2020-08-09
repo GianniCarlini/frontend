@@ -1,35 +1,30 @@
-import React, {Component} from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes,faSpinner} from '@fortawesome/free-solid-svg-icons'
+import React, {Component, useState, useEffect} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faTimes, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import PabellonDataService from '../../service/PabellonDataService';
 
-class VerPabellon extends Component{
-    render() {
-        return (
-          <div className="content-wrapper">
-            <section className="content-header">
-              <h1>Reserva de pabellón</h1>
-            </section>
-            <section className="content">
-              <table className="table table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>Paciente</th>
-                    <th>Pabellon</th>
-                    <th>Equipo</th>
-                    <th>Inicio</th>
-                    <th>Termino</th>
-                    <th>porsilamosca</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Ratón</td>
-                    <td>15</td>
-                    <td>100</td>
-                    <td>100</td>
-                    <td>100</td>
-                    <td>100</td>
+const VerPabellon = () => {
+    const [loading, setLoading] = useState(false);
+    const [pabellon, setPabellon] = useState([]);
+    useEffect(() => {
+        setLoading(true);
+        PabellonDataService.getPabellon().then(res => {
+            setPabellon(res.data)
+            setLoading(false);
+        }).catch(error => {
+            console.log(error);
+            setLoading(false);
+        });
+    }, []);
+    const item = pabellon.map((pabellon) =>
+                  <tr key={pabellon.resId}>
+                    <td>{pabellon.id_paciente}</td>
+                    <td></td>
+                    <td>{pabellon.id_equipo}</td>
+                    <td></td>
+                    <td></td>
+                    <td>{pabellon.motivo}</td>
                     <td>
                       <button
                         value="actualizar"
@@ -50,237 +45,29 @@ class VerPabellon extends Component{
                       </button>
                     </td>
                   </tr>
-                  <tr>
-                    <td>Teclado</td>
-                    <td>34</td>
-                    <td>340</td>
-                    <td>340</td>
-                    <td>340</td>
-                    <td>340</td>
-                    <td>340</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Pantalla</td>
-                    <td>10</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                    <td>400</td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </section>
-          </div>
-        );
-    }
+                  );
+    return (<div className="content-wrapper">
+        <section className="content-header">
+            <h1>Reserva de pabellón</h1>
+        </section>
+        <section className="content">
+            <table className="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Pabellon</th>
+                        <th>Equipo</th>
+                        <th>Inicio</th>
+                        <th>Termino</th>
+                        <th>Motivo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    {item}
+                 </tbody>
+            </table>
+        </section>
+    </div>);
 }
 export default VerPabellon;
