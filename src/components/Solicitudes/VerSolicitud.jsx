@@ -1,9 +1,7 @@
-import React, {Component, useState, useEffect} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTimes, faSpinner} from '@fortawesome/free-solid-svg-icons';
+import React, {Component} from 'react';
 import axios from 'axios';
 
-const BACKEND = "http://localhost:8080"
+const URL = "http://localhost:8080"
 
 export default class VerSolicitud extends React.Component {
     state = {
@@ -11,13 +9,13 @@ export default class VerSolicitud extends React.Component {
     }
 
     delete = (id, e) => {
-        axios.delete(`${BACKEND}/solicitud/${id}`)
+        axios.delete(`${URL}/solicitud/${id}`)
             .then(res => {
                 window.location.reload(true);
             })
     }
     componentDidMount() {
-        axios.get(`${BACKEND}/solicitud/ver`)
+        axios.get(`${URL}/solicitud/ver`)
             .then(res => {
                 const formulario = res.data;
                 this.setState({formulario});

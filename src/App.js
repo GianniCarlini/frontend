@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
-import Inicio from "./components/Dashboard/Inicio.jsx"
 import Car from "./components/Dashboard/carrusel.jsx"
 import Pabellon from "./components/Pabellon/ReservaPabellon.jsx";
 import VerPabellon from "./components/Pabellon/VerPabellon.jsx";
