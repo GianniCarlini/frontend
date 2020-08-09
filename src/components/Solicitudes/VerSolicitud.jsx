@@ -2,56 +2,37 @@ import React, {Component, useState, useEffect} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import FormularioDataService from '../../service/FormularioDataService';
 
-const VerSolicitud = () => {
-    const [loading, setLoading] = useState(false);
-    const [formulario, setFormulario] = useState([]);
-    useEffect(() => {
-        setLoading(true);
-        FormularioDataService.getFormulario().then(res => {
-            setFormulario(res.data)
-            setLoading(false);
-        }).catch(error => {
-            console.log(error);
-            setLoading(false);
-        });
-    }, []);
-    const item = formulario.map((formulario) =>
-                  <tr key={formulario.id}>
-                    <td>{formulario.id}</td>
-                    <td>{formulario.id_paciente}</td>
-                    <td>{formulario.tipo}</td>
-                    <td>{formulario.fecha_ingreso}</td>
-                    <td>{formulario.motivo}</td>
-                    <td>
-                      <button
-                        value="actualizar"
-                        title="Actualizar"
-                        type="button"
-                        className="btn btn-info"
-                      >
-                        <FontAwesomeIcon icon={faSpinner} />
-                      </button>
-                      &nbsp;
-                      <button
-                        value="eliminar"
-                        title="Eliminar"
-                        type="button"
-                        class="btn btn-danger"
-                      >
-                        <FontAwesomeIcon icon={faTimes} />
-                      </button>
-                    </td>
-                  </tr>
-                  );
-    return (<div className="content-wrapper">
-        <section className="content-header">
-            <h1>Reserva de pabellón</h1>
-        </section>
-        <section className="content">
-            <table className="table table-bordered table-hover">
-            <thead>
+const BACKEND = "http://localhost:8080"
+
+export default class VerSolicitud extends React.Component {
+    state = {
+        formulario: []
+    }
+
+    delete = (id, e) => {
+        axios.delete(`${BACKEND}/solicitud/${id}`)
+            .then(res => {
+                window.location.reload(true);
+            })
+    }
+    componentDidMount() {
+        axios.get(`${BACKEND}/solicitud/ver`)
+            .then(res => {
+                const formulario = res.data;
+                this.setState({formulario});
+            })
+    }
+
+    render() {
+        return (
+          <div className="content-wrapper">
+            <section className="content-header">
+              <h1>Solicitud</h1>
+            </section>
+            <section className="content">
+              <table className="table table-bordered table-hover">
+                <thead>
                   <tr>
                     <th>Id</th>
                     <th>Paciente</th>
@@ -61,11 +42,32 @@ const VerSolicitud = () => {
                     <th>Acciones</th>
                   </tr>
                 </thead>
-                <tbody> 
-                    {item}
-                 </tbody>
-            </table>
-        </section>
-    </div>);
+                <tbody>
+                  {this.state.formulario.map((formulario) => (
+                    <tr key={formulario.id}>
+                    <td>{formulario.id}</td>
+                    <td>{formulario.id_paciente}</td>
+                    <td>{formulario.tipo}</td>
+                    <td>{formulario.fecha_ingreso}</td>
+                    <td>{formulario.motivo}</td>
+                    <td>
+                      
+                      <button
+                        value="eliminar"
+                        title="Eliminar"
+                        type="button"
+                        class="btn btn-danger"
+                        onClick={(e) => this.delete(formulario.id, e)}
+                      >
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                  ))}
+                </tbody>
+              </table>
+            </section>
+          </div>
+        );
+    }
 }
-export default VerSolicitud;
