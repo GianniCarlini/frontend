@@ -14,6 +14,10 @@ export default class VerSolicitud extends React.Component {
                 window.location.reload(true);
             })
     }
+
+    actualizar= (id, e) => {
+      window.location = '/solicitud/actualizar/' + id;
+    }
     componentDidMount() {
         axios.get(`${URL}/solicitud/ver`)
             .then(res => {
@@ -58,6 +62,16 @@ export default class VerSolicitud extends React.Component {
                         onClick={(e) => this.delete(formulario.id, e)}
                       >
                         Eliminar
+                      </button>
+                      &nbsp;
+                      <button
+                        value="actualizar"
+                        title="Actualizar"
+                        type="button"
+                        class="btn btn-primary"
+                        onClick={(e) => this.actualizar(formulario.id, e)}
+                      >
+                        Actualizar
                       </button>
                     </td>
                   </tr>

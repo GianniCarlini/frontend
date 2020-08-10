@@ -11,6 +11,7 @@ import Cama from "./components/Cama/ReservaCama.jsx"
 import VerCama from "./components/Cama/VerCama.jsx"
 import Solicitud from "./components/Solicitudes/Solicitud.jsx"
 import VerSolicitud from "./components/Solicitudes/VerSolicitud.jsx"
+import ActualizarSolicitud from "./components/Solicitudes/ActualizarSolicitud.jsx"
 
 class App extends Component{
     render() {
@@ -27,9 +28,10 @@ class App extends Component{
                 {/*rutas de cama*/}
                 <Route exact path='/reserva/cama' component={Cama} />
                 <Route exact path='/reserva/cama/ver' component={VerCama} />
-                {/*rutas de cama*/}
+                {/*rutas de solicitud*/}
                 <Route exact path='/solicitud' component={Solicitud} />
                 <Route exact path='/solicitud/ver' component={VerSolicitud} />
+                <Route exact path='/solicitud/actualizar/:id' component={ActualizarSolicitud}/>
                 {/*rutas de prueba*/}
             </Router>
         )

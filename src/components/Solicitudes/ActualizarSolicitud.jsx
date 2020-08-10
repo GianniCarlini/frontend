@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import FormularioCreate from '../../service/FormularioCreate';
+import FormularioUpdate from '../../service/FormularioUpdate';
+import axios from 'axios';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -7,11 +8,12 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' }
 ]
 const Tipo = [{ value: 'Sillon', label: 'Sillón'},{ value: 'Pabellon', label: 'Pabellón'}]
-class Solicitud extends Component{
+class ReservaCama extends Component{
   
-  constructor(){
-		super();
+  constructor(props){
+		super(props);
 		this.state = {
+            fieldId: this.props.match.params.id,
 			fieldPaciente:"",
 			fieldIngreso:"",
 			fieldMotivo:"",
@@ -23,13 +25,14 @@ class Solicitud extends Component{
         return (
           <div className="content-wrapper">
             <section className="content-header">
-              <h1>Reserva de cama de recuperación</h1>
+            <h1>{this.props.match.params.id}</h1>
             </section>
             <section className="content">
               <div className="row">
                 <div className="col-md-6">
                   <div className="box box-primary">
                     <form>
+                    <input type="hidden" name="action" value={this.props.match.params.id} />
                       <div className="form-group">
                         <label htmlFor="exampleFormControlSelect1">
                           Paciente
@@ -39,6 +42,7 @@ class Solicitud extends Component{
                           id="exampleFormControlSelect1"
                           value={this.state.fieldPaciente}
             	            onChange={(event)=>this.setState({fieldPaciente:event.target.value})}>
+                          <option value="" selected disabled hidden>Please select</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -90,7 +94,7 @@ class Solicitud extends Component{
     }
     async onClickSave()
 	{
-		const res = await FormularioCreate.create(this.state)
+		const res = await FormularioUpdate.create(this.state)
 		if (res.success) {
 			window.location.replace("/solicitud/ver")
 		}
@@ -100,4 +104,4 @@ class Solicitud extends Component{
 	}
 }
 
-export default Solicitud;
+export default ReservaCama;

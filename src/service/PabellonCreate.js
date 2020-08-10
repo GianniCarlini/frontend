@@ -5,13 +5,16 @@ const pabellon = {};
 pabellon.create = async (state) => {
 
 	const datapost = {
+		resId:{
+			fecha_ingreso: state.fieldIngreso,
+			fecha_salida: state.fieldSalida,
+			id_pabellon: state.fieldPabellon
+		},
 		id_paciente: state.fieldPaciente,
-		id_pabellon: state.fieldPabellon,
 		id_equipo: state.fieldEquipo,
-		fecha_ingreso: state.fieldIngreso,
-		fecha_salida: state.fieldSalida,
-		motivo: state.fieldMotivo,
-		estado: true
+		estado: true,
+		motivo: state.fieldMotivo
+		
 	}
 
 	const urlPost = baseUrl

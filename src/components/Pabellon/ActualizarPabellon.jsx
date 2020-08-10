@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import PabellonCreate from '../../service/PabellonCreate';
-import axios from 'axios';
 
-const URL = "http://localhost:8081"
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
-class Pabellon extends Component{
+class ActualizarPabellon extends Component{
 
   constructor(){
 		super();
@@ -15,28 +18,13 @@ class Pabellon extends Component{
       fieldIngreso:"",
       fieldSalida:"",
       fieldMotivo:"",
-      pabellonapi: []
-    }
-
-  }
-
-
-   componentDidMount() {
-     axios.get(`${URL}/pabellon`)
-      .then(res => {
-        const pabellonapi = res.data;
-        console.log(pabellonapi)
-        this.setState(this.state.pabellonapi = res.data )
-      })
-  }
-
-  
-  
+		}
+	}
     render() {
-      console.log(this.state.pabellonapi)
         return (
           <div className="content-wrapper">
             <section className="content-header">
+              <h1>Reserva de pabellón</h1>
             </section>
             <section className="content">
               <div className="row">
@@ -52,7 +40,6 @@ class Pabellon extends Component{
                           id="exampleFormControlSelect1"
                           value={this.state.fieldPaciente}
             	            onChange={(event)=>this.setState({fieldPaciente:event.target.value})}>
-                          <option value="" selected disabled hidden>Please select</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -69,8 +56,11 @@ class Pabellon extends Component{
                           id="exampleFormControlSelect2"
                           value={this.state.fieldPabellon}
             	            onChange={(event)=>this.setState({fieldPabellon:event.target.value})}>
-                          <option value="" selected disabled hidden>Please select</option>
-                          {this.state.pabellonapi.map((pabellonapi) => (<option key = {pabellonapi.id} value = {pabellonapi.id} >{pabellonapi.sala}</option>))}
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
                         </select>
                       </div>
                       <div className="form-group">
@@ -143,4 +133,4 @@ class Pabellon extends Component{
     }
 }
 
-export default Pabellon;
+export default ActualizarPabellon;
