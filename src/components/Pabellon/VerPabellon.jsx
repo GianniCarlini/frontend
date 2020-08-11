@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 const URL = "http://localhost:8080"
+const URL2 = "http://localhost:8081"
 
 export default class VerPabellon extends React.Component {
   state = {
-    pabellon: []
+    pabellon: [],
+    salas: []
   }
 
   delete = (pabellon, e) => {
@@ -22,8 +24,22 @@ export default class VerPabellon extends React.Component {
     axios.get(`${URL}/reserva/pabellon/ver`)
       .then(res => {
         const pabellon = res.data;
-        this.setState({ pabellon });
+        this.setState({ pabellon })
       })
+    axios.get(`${URL2}/pabellon/`)
+      .then(res => {
+        const salas = res.data;
+        this.setState({ salas })
+      })
+  }
+  getPabellonbyId = (id)=>{
+    console.log("id:",id)
+    let resp = this.state.salas.filter(salas=>salas.id==id)
+    if(resp.length==0){
+      return ""
+    }
+    console.log("entro",resp[0].id)
+    return resp[0].sala
   }
 
   render() {
@@ -49,7 +65,7 @@ export default class VerPabellon extends React.Component {
               {this.state.pabellon.map((pabellon) => (
                 <tr key={pabellon.resId}>
                   <td>{pabellon.id_paciente}</td>
-                  <td>{pabellon.resId.id_pabellon}</td>
+                  <td>{this.getPabellonbyId(pabellon.resId.id_pabellon)}</td>
                   <td>{pabellon.id_equipo}</td>
                   <td>{pabellon.resId.fecha_ingreso}</td>
                   <td>{pabellon.resId.fecha_salida}</td>
