@@ -2,11 +2,7 @@ import React, {Component} from 'react';
 import FormularioCreate from '../../service/FormularioCreate';
 import '../css/span.css'
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
+
 const Tipo = [{ value: 'Sillon', label: 'Sillón'},{ value: 'Pabellon', label: 'Pabellón'}]
 class Solicitud extends Component{
   
@@ -75,7 +71,7 @@ class Solicitud extends Component{
                       </div>
                       <div className="form-group">
                       <label htmlFor="exampleFormControlSelect2"><h6 class="heading">Fecha<span>*</span></h6></label>
-                          <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
+                          <input type="datetime-local" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldIngreso}
             	              onChange={(event)=>this.setState({fieldIngreso:event.target.value})}
             	            />
@@ -97,7 +93,8 @@ class Solicitud extends Component{
     }
     async onClickSave()
 	{
-		const res = await FormularioCreate.create(this.state)
+    const res = await FormularioCreate.create(this.state)
+    
 		if (res.success) {
 			window.location.replace("/solicitud/ver")
 		}

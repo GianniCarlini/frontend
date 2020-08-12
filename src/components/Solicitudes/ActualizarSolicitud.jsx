@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
 import FormularioUpdate from '../../service/FormularioUpdate';
 import axios from 'axios';
+import '../css/span.css'
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
 const Tipo = [{ value: 'Sillon', label: 'Sillón'},{ value: 'Pabellon', label: 'Pabellón'}]
 class ReservaCama extends Component{
   
@@ -35,7 +31,7 @@ class ReservaCama extends Component{
                     <input type="hidden" name="action" value={this.props.match.params.id} />
                       <div className="form-group">
                         <label htmlFor="exampleFormControlSelect1">
-                          Paciente
+                        <h6 class="heading">Paciente<span>*</span></h6>
                         </label>
                         <select
                           className="form-control"
@@ -51,15 +47,20 @@ class ReservaCama extends Component{
                         </select>
                       </div>
                       <div className="form-group">
-                        <label>Tipo de reserva</label>
-                          <input type="text" class="form-control" placeholder="Sillon/Pabellon"
-            	              value={this.state.fieldTipo}
-            	              onChange={(event)=>this.setState({fieldTipo:event.target.value})}
-            	            />
+                      <label htmlFor="exampleFormControlSelect2"><h6 class="heading">Tipo de reserva<span>*</span></h6></label>
+                          <select
+                          className="form-control"
+                          id="exampleFormControlSelect2"
+                          value={this.state.fieldTipo}
+            	            onChange={(event)=>this.setState({fieldTipo:event.target.value})}>
+                          <option value="" selected disabled hidden>Please select</option>
+                          <option>Sillón</option>
+                          <option>Pabellón</option>
+                        </select>
                       </div>
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">
-                          Motivo
+                        <h6>Motivo</h6>
                         </label>
                         <textarea
                           className="form-control"
@@ -71,8 +72,8 @@ class ReservaCama extends Component{
                         />
                       </div>
                       <div className="form-group">
-                        <label>Fecha</label>
-                          <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
+                      <label htmlFor="exampleFormControlSelect2"><h6 class="heading">Fecha<span>*</span></h6></label>
+                          <input type="datetime-local" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldIngreso}
             	              onChange={(event)=>this.setState({fieldIngreso:event.target.value})}
             	            />

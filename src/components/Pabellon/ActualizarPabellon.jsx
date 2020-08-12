@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import PabellonCreate from '../../service/PabellonCreate';
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
+
 
 class ActualizarPabellon extends Component{
 
