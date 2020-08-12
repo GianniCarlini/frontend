@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import FormularioCreate from '../../service/FormularioCreate';
+import '../css/span.css'
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -32,13 +33,14 @@ class Solicitud extends Component{
                     <form>
                       <div className="form-group">
                         <label htmlFor="exampleFormControlSelect1">
-                          Paciente
+                        <h6 class="heading">Paciente<span>*</span></h6>
                         </label>
                         <select
                           className="form-control"
                           id="exampleFormControlSelect1"
                           value={this.state.fieldPaciente}
             	            onChange={(event)=>this.setState({fieldPaciente:event.target.value})}>
+                          <option value="" selected disabled hidden>Please select</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -47,15 +49,20 @@ class Solicitud extends Component{
                         </select>
                       </div>
                       <div className="form-group">
-                        <label>Tipo de reserva</label>
-                          <input type="text" class="form-control" placeholder="Sillon/Pabellon"
-            	              value={this.state.fieldTipo}
-            	              onChange={(event)=>this.setState({fieldTipo:event.target.value})}
-            	            />
+                      <label htmlFor="exampleFormControlSelect2"><h6 class="heading">Tipo de reserva<span>*</span></h6></label>
+                          <select
+                          className="form-control"
+                          id="exampleFormControlSelect2"
+                          value={this.state.fieldTipo}
+            	            onChange={(event)=>this.setState({fieldTipo:event.target.value})}>
+                          <option value="" selected disabled hidden>Please select</option>
+                          <option>Sillón</option>
+                          <option>Pabellón</option>
+                        </select>
                       </div>
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">
-                          Motivo
+                          <h6>Motivo</h6>
                         </label>
                         <textarea
                           className="form-control"
@@ -67,7 +74,7 @@ class Solicitud extends Component{
                         />
                       </div>
                       <div className="form-group">
-                        <label>Fecha</label>
+                      <label htmlFor="exampleFormControlSelect2"><h6 class="heading">Fecha<span>*</span></h6></label>
                           <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldIngreso}
             	              onChange={(event)=>this.setState({fieldIngreso:event.target.value})}
