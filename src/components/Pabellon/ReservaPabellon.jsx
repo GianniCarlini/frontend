@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PabellonCreate from '../../service/PabellonCreate';
 import axios from 'axios';
+import '../css/span.css'
 
 const URL = "http://localhost:8081"
 
@@ -45,7 +46,7 @@ class Pabellon extends Component{
                     <form>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlSelect1">
-                          Paciente
+                        <h6 class="heading">Paciente<span>*</span></h6>
                         </label>
                         <select
                           className="form-control"
@@ -62,7 +63,7 @@ class Pabellon extends Component{
                       </div>
                       <div className="form-group">
                         <label htmlFor="exampleFormControlSelect2">
-                          Pabellón
+                        <h6 class="heading">Pabellón<span>*</span></h6>
                         </label>
                         <select
                           className="form-control"
@@ -75,13 +76,14 @@ class Pabellon extends Component{
                       </div>
                       <div className="form-group">
                         <label htmlFor="exampleFormControlSelect3">
-                          Equipo médico
+                        <h6 class="heading">Equipo Médico<span>*</span></h6>
                         </label>
                         <select
                           className="form-control"
                           id="exampleFormControlSelect3"
                           value={this.state.fieldEquipo}
             	            onChange={(event)=>this.setState({fieldEquipo:event.target.value})}>
+                          <option value="" selected disabled hidden>Please select</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -90,14 +92,14 @@ class Pabellon extends Component{
                         </select>
                       </div>
                       <div className="form-group">
-                        <label>Fecha de ingreso</label>
+                        <label><h6 class="heading">Fecha Ingreso<span>*</span></h6></label>
                           <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldIngreso}
             	              onChange={(event)=>this.setState({fieldIngreso:event.target.value})}
             	            />
                       </div>
                       <div className="form-group">
-                        <label>Fecha de salida</label>
+                        <label><h6 class="heading">Fecha Salida<span>*</span></h6></label>
                           <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldSalida}
             	              onChange={(event)=>this.setState({fieldSalida:event.target.value})}
@@ -105,7 +107,7 @@ class Pabellon extends Component{
                       </div>
                       <div className="form-group">
                         <label htmlFor="exampleFormControlTextarea1">
-                          Motivo
+                          <h6>Motivo</h6>
                         </label>
                         <textarea
                           className="form-control"
