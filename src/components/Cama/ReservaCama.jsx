@@ -1,27 +1,41 @@
 import React, {Component} from 'react';
 import CamaCreate from '../../service/CamaCreate';
+import axios from 'axios';
+import '../css/span.css'
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
+const URL = "http://localhost:8081"
 
 class ReservaCama extends Component{
+
   constructor(){
-    super();
-    this.state = {
-      fieldPaciente:"",
-      fieldCama:"",
-      fieldIngreso:"",
+		super();
+		this.state = {
+			fieldPaciente:"",
+			fieldCama:"",
+			fieldIngreso:"",
       fieldSalida:"",
+      pabellonapi: []
     }
+
   }
+
+
+   componentDidMount() {
+     axios.get(`${URL}/salas`)
+      .then(res => {
+        const pabellonapi = res.data;
+        console.log(pabellonapi)
+        this.setState(this.state.pabellonapi = res.data )
+      })
+  }
+
+  
+  
     render() {
+      console.log(this.state.fieldIngreso)
         return (
           <div className="content-wrapper">
             <section className="content-header">
-              <h1>Reserva de cama de recuperación</h1>
             </section>
             <section className="content">
               <div className="row">
@@ -30,13 +44,14 @@ class ReservaCama extends Component{
                     <form>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlSelect1">
-                          Paciente
+                        <h6 class="heading">Paciente<span>*</span></h6>
                         </label>
                         <select
                           className="form-control"
                           id="exampleFormControlSelect1"
                           value={this.state.fieldPaciente}
             	            onChange={(event)=>this.setState({fieldPaciente:event.target.value})}>
+                          <option value="" selected disabled hidden>Please select</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -46,34 +61,31 @@ class ReservaCama extends Component{
                       </div>
                       <div className="form-group">
                         <label htmlFor="exampleFormControlSelect2">
-                          Sillon
+                        <h6 class="heading">Cama<span>*</span></h6>
                         </label>
                         <select
                           className="form-control"
                           id="exampleFormControlSelect2"
-                          value={this.state.fieldSillon}
-            	            onChange={(event)=>this.setState({fieldSillon:event.target.value})}>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                          value={this.state.fieldCama}
+            	            onChange={(event)=>this.setState({fieldCama:event.target.value})}>
+                          <option value="" selected disabled hidden>Please select</option>
+                          {this.state.pabellonapi.map((pabellonapi) => (<option key = {pabellonapi.id} value = {pabellonapi.id} >{pabellonapi.cama}</option>))}
                         </select>
                       </div>
                       <div className="form-group">
-                        <label>Fecha de ingreso</label>
-                          <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
+                        <label><h6 class="heading">Fecha Ingreso<span>*</span></h6></label>
+                          <input type="datetime-local" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldIngreso}
             	              onChange={(event)=>this.setState({fieldIngreso:event.target.value})}
             	            />
                       </div>
                       <div className="form-group">
-                        <label>Fecha de salida</label>
-                          <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
+                        <label><h6 class="heading">Fecha Salida<span>*</span></h6></label>
+                          <input type="datetime-local" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldSalida}
             	              onChange={(event)=>this.setState({fieldSalida:event.target.value})}
             	            />
-                      </div>
+                      </div>                      
                       <div className="form-group row">
                         <div className="col-sm-10">
                           <button type="submit" className="btn btn-primary"  onClick={()=>this.onClickSave()}>

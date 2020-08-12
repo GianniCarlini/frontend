@@ -3,10 +3,9 @@ const baseUrl = "http://localhost:8080/solicitud"
 const formulario = {};
 
 formulario.create = async (state) => {
-
 	const datapost = {
 		id_paciente: state.fieldPaciente,
-		fecha_ingreso: state.fieldIngreso,
+		fecha_ingreso: state.fieldIngreso.replace("T"," "),
 		motivo: state.fieldMotivo,
 		tipo: state.fieldTipo
 	}

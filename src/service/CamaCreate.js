@@ -5,11 +5,13 @@ const cama = {};
 cama.create = async (state) => {
 
 	const datapost = {
+		recuId:{
+			fecha_ingreso: state.fieldIngreso.replace("T"," "),
+			fecha_salida: state.fieldSalida.replace("T"," "),
+			id_cama: state.fieldCama
+		},
 		id_paciente: state.fieldPaciente,
-		id_cama: state.fieldCama,
-		fecha_ingreso: state.fieldIngreso,
-		fecha_salida: state.fieldSalida,
-		estado: true
+		estado: true,
 	}
 
 	const urlPost = baseUrl

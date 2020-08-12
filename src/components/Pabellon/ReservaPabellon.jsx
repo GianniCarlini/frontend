@@ -34,7 +34,7 @@ class Pabellon extends Component{
   
   
     render() {
-      console.log(this.state.pabellonapi)
+      console.log(this.state.fieldIngreso)
         return (
           <div className="content-wrapper">
             <section className="content-header">
@@ -93,14 +93,14 @@ class Pabellon extends Component{
                       </div>
                       <div className="form-group">
                         <label><h6 class="heading">Fecha Ingreso<span>*</span></h6></label>
-                          <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
+                          <input type="datetime-local" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldIngreso}
             	              onChange={(event)=>this.setState({fieldIngreso:event.target.value})}
             	            />
                       </div>
                       <div className="form-group">
                         <label><h6 class="heading">Fecha Salida<span>*</span></h6></label>
-                          <input type="text" class="form-control" placeholder="dd-MM-yyyy HH:mm"
+                          <input type="datetime-local" class="form-control" placeholder="dd-MM-yyyy HH:mm"
             	              value={this.state.fieldSalida}
             	              onChange={(event)=>this.setState({fieldSalida:event.target.value})}
             	            />

@@ -115,12 +115,6 @@ class Menu extends Component {
                             <p>Ver Sillónes</p>
                           </a>
                         </li>
-                        <li className="nav-item">
-                          <a href="#" className="nav-link">
-                            <i className="far fa-circle nav-icon" />
-                            <p>Pruebas</p>
-                          </a>
-                        </li>
                       </ul>
                     </li>
                   </ul>

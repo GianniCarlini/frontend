@@ -6,8 +6,8 @@ pabellon.create = async (state) => {
 
 	const datapost = {
 		resId:{
-			fecha_ingreso: state.fieldIngreso,
-			fecha_salida: state.fieldSalida,
+			fecha_ingreso: state.fieldIngreso.replace("T"," "),
+			fecha_salida: state.fieldSalida.replace("T"," "),
 			id_pabellon: state.fieldPabellon
 		},
 		id_paciente: state.fieldPaciente,
@@ -16,7 +16,6 @@ pabellon.create = async (state) => {
 		motivo: state.fieldMotivo
 		
 	}
-
 	const urlPost = baseUrl
 
 	const res = await axios.post(urlPost,datapost)

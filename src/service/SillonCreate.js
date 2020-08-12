@@ -5,11 +5,13 @@ const sillon = {};
 sillon.create = async (state) => {
 
 	const datapost = {
+		quimioId:{
+			fecha_ingreso: state.fieldIngreso.replace("T"," "),
+			fecha_salida: state.fieldSalida.replace("T"," "),
+			id_sillon: state.fieldSillon
+		},
 		id_paciente: state.fieldPaciente,
-		id_sillon: state.fieldSillon,
-		fecha_ingreso: state.fieldIngreso,
-		fecha_salida: state.fieldSalida,
-		estado: true
+		estado: true,
 	}
 
 	const urlPost = baseUrl

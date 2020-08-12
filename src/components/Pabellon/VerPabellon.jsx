@@ -46,7 +46,7 @@ export default class VerPabellon extends React.Component {
     return (
       <div className="content-wrapper">
         <section className="content-header">
-          <h1>Solicitud</h1>
+          <h1>Reservas de Pabellones</h1>
         </section>
         <section className="content">
           <table className="table table-bordered table-hover">
